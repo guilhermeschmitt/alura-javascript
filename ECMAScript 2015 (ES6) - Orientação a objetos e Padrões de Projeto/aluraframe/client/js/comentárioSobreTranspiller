@@ -1,0 +1,17 @@
+Foi utilizado uns transcompilador (Babel) para fazer a mudança do
+código com ES2015 para ES5, assim, temos mais compatibilidade com
+navegadores mais antigos.
+
+No final dos arquivos transcompilados temos o seguinte comentário especial
+
+                  //# sourceMappingURL=classe.js.map
+
+Esse comentário indica para o browser qual sourcemap deve ser carregado,
+com isso conseguimos debugar o código usando como base os arquivos com o
+ES2015.
+
+Porém, nem tudo é resolvido pelo transcompilador, se usarmos uma Promise,
+o código transcompilado continuará a não funcionar caso o navegador não
+suporte esse recurso, a mesma coisa da Fetch API. Nesses casos, é comum
+misturar o processo de transcompilação com o uso de um ou outro polyfill
+para tapar aquelas lacunas que o transpiler não consegue.
